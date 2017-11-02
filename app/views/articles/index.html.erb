@@ -1,7 +1,5 @@
 <h1>Listing all articles</h1>
 
-<%= link_to 'Create new article', new_article_path %>
-
 <% @articles.reverse_each do |article| %>
 <p>
   <b><%= article.title %></b>
