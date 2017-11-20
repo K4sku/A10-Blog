@@ -1,0 +1,13 @@
+<h1 align="center"> Welcome to <%= @user.username %>'s profile</h1>
+image placeholder
+<h1 align="center"> Articles</h1>
+
+<div class="pagination justify-content-center pagination-bottom">
+  <%= will_paginate @user_articles %>
+</div>
+
+<%= render 'articles/article', obj: @user_articles %>
+
+<div class="pagination justify-content-center">
+  <%= will_paginate @user_articles %>
+</div>

@@ -1,0 +1,28 @@
+<h2 align="center">Listing all users</h2>
+
+<div class="pagination justify-content-center">
+  <%= will_paginate %>
+</div>
+
+<div class="card-deck" >
+<% @users.each do |user| %>
+  <div class="card" style="max-width: 22rem;">
+    <img class="card-img-top" src="http://www.pieglobal.com/wp-content/uploads/2015/10/placeholder-user.png" alt="Card image cap">
+    <div class="card-body">
+      <h4 class="card-title"><%= link_to user.username, user_path(user) %></h4>
+      <p class="card-text">
+        <ul class="user-article-list">
+          <% user.articles.each do |article| %>
+             <li class="user-article-list"><%= link_to article.title, article_path(article) %> </li>
+          <% end %>
+        </ul>
+      </p>
+      <p class="card-text"><small class="text-muted"><%= pluralize(user.articles.count, 'article') if user.articles %></small></p>
+    </div>
+  </div>
+<% end %>
+</div>
+
+<div class="pagination justify-content-center pagination-bottom">
+  <%= will_paginate %>
+</div>

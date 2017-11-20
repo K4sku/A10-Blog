@@ -1,8 +1,10 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[edit update show destroy]
+  before_action :require_user, except: %i[index show]
+  before_action :require_same_user, only: %i[edit update destroy]
 
   def index
-    @articles = Article.all
+    @articles = Article.paginate(page: params[:page], per_page: 10)
   end
 
   def new
@@ -39,8 +41,6 @@ class ArticlesController < ApplicationController
     set_article
   end
 
-
-
   def destroy
     set_article
     @article.destroy
@@ -57,6 +57,12 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :description)
+  end
+
+  def require_same_user
+    return if current_user == @article.user
+    flash[:danger] = 'You can edit or delete only your own articles'
+    redirect_to root_path
   end
 
 end

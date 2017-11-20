@@ -1,5 +1,7 @@
 @import "bootstrap";
 
+$link-color: #357eff;
+
 html {
   position: relative;
   min-height: 100%;
@@ -29,7 +31,17 @@ footer {
 }
 
 .card-title-link a:link {
-  color: black;
+  color: $link-color;
 }.card-title-link a:visited {
-  color: black;
+  color: $link-color;
+}
+
+.user-article-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pagination-bottom {
+  margin-top: 1rem;
 }
