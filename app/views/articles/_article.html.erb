@@ -14,7 +14,7 @@
             last updated: <%= time_ago_in_words(article.updated_at) %> ago.
           </small>
         </p>
-        <% if logged_in? && current_user == article.user || article.user.admin? %>
+        <% if logged_in? && current_user == article.user || current_user.admin? %>
             <div class="articles-actions">
               <%= link_to 'Delete', article_path(article), method: :delete,
                           data:                                    {confirm: 'Are you sure you want to delete the article?'},
