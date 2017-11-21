@@ -14,13 +14,19 @@ test:
   <<: *default
   database: rails-app-starting-template_test
 
-production:
-  adapter: postgresql
-  encoding: unicode
-  pool:     50
-  timeout:  5000
-  database: <%= ENV['DB_NAME'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  host:     localhost
-  port:     5432
+#production:
+#  adapter: postgresql
+#  encoding: unicode
+#  pool:     50
+#  timeout:  5000
+#  database: <%= ENV['DB_NAME'] %>
+#  username: <%= ENV['DB_USERNAME'] %>
+#  password: <%= ENV['DB_PASSWORD'] %>
+#  host:     localhost
+#  port:     5432
+
+  production:
+    <<: *default
+    database: myapp_production
+    username: myapp
+    password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
