@@ -1,0 +1,22 @@
+<h2 align="center">Listing all categories</h2>
+
+<div class="pagination justify-content-center">
+  <%= will_paginate %>
+</div>
+
+<% @categories.each do |category| %>
+    <div class="card card-stack" style="width: 70rem;">
+
+      <div class="card-body">
+        <h4 class="card-title card-title-link">Category: <%= link_to category.name, category_path(category) %></h4>
+
+        <p class="card-text">
+        </p>
+
+        </div>
+    </div>
+<% end %>
+
+<div class="pagination justify-content-center">
+  <%= will_paginate %>
+</div>
