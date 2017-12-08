@@ -14,16 +14,24 @@
           last updated: <%= time_ago_in_words(article.updated_at) %> ago.
         </small>
       </p>
-      <% if logged_in? && ( current_user == article.user || current_user.admin? ) %>
-          <div class="articles-actions">
-            <%= link_to 'Delete', article_path(article), method: :delete,
-                        data:                                    {confirm: 'Are you sure you want to delete the article?'},
-                        class:                                   'btn btn-sm btn-danger card-link' %>
 
-            <%= link_to 'Edit', edit_article_path(article), class: 'btn btn-sm btn-primary' %>
+      <% if article.categories.any? %>
+        <p class="card-text text-muted">
+          Categories:
+          <%= render article.categories %>
+        </p>
+      <% end %>
 
-            <%= link_to 'Show', article_path(article), class: 'btn btn-sm btn-success' %></div>
-          </div>
+      <% if logged_in? && (current_user == article.user || current_user.admin?) %>
+        <div class="articles-actions">
+          <%= link_to 'Delete', article_path(article), method: :delete,
+                      data:                                    {confirm: 'Are you sure you want to delete the article?'},
+                      class:                                   'btn btn-sm btn-danger card-link' %>
+
+          <%= link_to 'Edit', edit_article_path(article), class: 'btn btn-sm btn-primary' %>
+
+          <%= link_to 'Show', article_path(article), class: 'btn btn-sm btn-success' %></div>
+        </div>
       <% end %>
       </div>
   </div>

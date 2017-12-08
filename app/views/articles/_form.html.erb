@@ -1,30 +1,43 @@
 <%= render 'shared/errors', obj: @article %>
 
 <%= form_for @article do |f| %>
-    <div class="form-group row">
-      <div class="col-sm-2 text-right font-weight-bold">
-        <%= f.label :title, class:'col-form-label ' %>
-      </div>
-      <div class="col-sm-8">
-        <%= f.text_field :title, class:'form-control', placeholder:'Article Title' %>
+  <div class="form-group row">
+    <div class="col-sm-2 text-right font-weight-bold">
+      <%= f.label :title, class: 'col-form-label ' %>
+    </div>
+    <div class="col-sm-8">
+      <%= f.text_field :title, class: 'form-control', placeholder: 'Article Title' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-2 text-right font-weight-bold">
+      <%= f.label :description, class: 'col-form-label' %>
+    </div>
+    <div class="col-sm-8">
+      <%= f.text_area :description, rows: 10, class: 'form-control', placeholder: 'Article' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-2 text-right font-weight-bold">
+      Categories
+    </div>
+    <div class="col-sm-8">
+      <div class="form-check form-check-inline">
+        <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb| %>
+          <%= cb.label(class: 'form-check-label') { cb.check_box(class: 'form-check-input') + cb.text } %>
+        <% end %>
       </div>
     </div>
+  </div>
 
-    <div class="form-group row">
-      <div class="col-sm-2 text-right font-weight-bold">
-        <%= f.label :description, class:'col-form-label' %>
-      </div>
-      <div class="col-sm-8">
-        <%= f.text_area :description, rows:10, class:'form-control', placeholder:'Article' %>
-      </div>
+  <div class="form-group row">
+    <div class="offset-sm-2 col-sm-6">
+
+      <%= link_to 'Back to list', articles_path, class: 'btn btn-primary' %>
+      <%= f.submit class: 'btn btn-success' %>
     </div>
-
-    <div class="form-group row">
-      <div class="offset-sm-2 col-sm-6">
-
-        <%= link_to 'Back to list', articles_path, class:'btn btn-primary' %>
-        <%= f.submit class:'btn btn-success' %>
-      </div>
-    </div>
+  </div>
 
 <% end %>
