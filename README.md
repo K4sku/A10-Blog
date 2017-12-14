@@ -1,4 +1,4 @@
-# Introduction to Rails webb app
+# Blog web app
 
 Rails blog app, created for exercise.
 
