@@ -11,4 +11,4 @@ Testing with Capybara and Minitest.
 Slim for practice. 
 
 
-Deployed app: http://a-10-blog.herokuapp.com/articles
+Deployed app: http://a-10-blog.herokuapp.com
