@@ -1,21 +1,13 @@
-<%= render 'shared/errors', obj: @category %>
+= render 'shared/errors', obj: @category
 
-<%= form_for @category do |f| %>
-  <div class="form-group row">
-    <div class="col-sm-2 text-right font-weight-bold">
-      <%= f.label :name, class:'col-form-label ' %>
-    </div>
-    <div class="col-sm-8">
-      <%= f.text_field :name, class:'form-control', placeholder:'Category name' %>
-    </div>
-  </div>
+= form_for @category do |f|
+  .form-group.row
+    .col-sm-2.text-right.font-weight-bold
+      = f.label :name, class:'col-form-label '
+    .col-sm-8
+      = f.text_field :name, class:'form-control', placeholder:'Category name'
 
-  <div class="form-group row">
-    <div class="offset-sm-2 col-sm-6">
-
-      <%= link_to 'Back to list', categories_path, class:'btn btn-primary' %>
-      <%= f.submit class:'btn btn-success' %>
-    </div>
-  </div>
-
-<% end %>
+  .form-group.row
+    .offset-sm-2.col-sm-6
+      = link_to 'Back to list', categories_path, class:'btn btn-primary'
+      = f.submit class:'btn btn-success'

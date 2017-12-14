@@ -1,34 +1,32 @@
-<h2 align="center"><%= @article.title %> </h2>
+h2 align="center"
+  = @article.title
 
-<div class="card" style="width: 70rem;">
-  <div class="card-body">
-    <h5 class="card-title">Created by: <%= link_to @article.user.username, user_path(@article.user) %></h5>
-    <p class="card-text">
-      <%= simple_format(@article.description) %>
-    </p>
-    <p class="card-text">
-      <small class="text-muted">
-        Created by: <%= @article.user.username if @article.user %>
-        <%= time_ago_in_words(@article.created_at) %> ago,
-        last updated: <%= time_ago_in_words(@article.updated_at) %> ago.
-      </small>
-    </p>
+.card style="width: 70rem;"
+  .card-body
+    h5.card-title
+      ' Created by:
+      = link_to @article.user.username, user_path(@article.user)
+    p.card-text
+      = simple_format(@article.description)
 
-    <% if @article.categories.any? %>
-      <p class="card-text text-muted">
-        Categories:
-        <%= render @article.categories %>
-      </p>
-    <% end %>
+    p.card-text
+      small.text-muted
+        ' Created by:
+        = @article.user.username if @article.user
+        = time_ago_in_words(@article.created_at)
+        '  ago, last updated:
+        = time_ago_in_words(@article.updated_at)
+        |  ago.
 
-    <div class="articles-actions">
-      <% if logged_in? && current_user == @article.user || current_user.admin? %>
-        <%= link_to 'Delete', articles_path, method: :delete,
-                    data:                            {confirm: 'Are you sure you want to delete the article?'},
-                    class:                           'btn btn-sm btn-danger card-link' %>
-        <%= link_to 'Edit', edit_article_path, class: 'btn btn-sm btn-primary' %>
-      <% end %>
-      <%= link_to 'Back to list', articles_path, class: 'btn btn-sm btn-success' %>
-    </div>
-  </div>
-</div>
+    - if @article.categories.any?
+      p.card-text.text-muted
+        | Categories:
+        = render @article.categories
+
+    .articles-actions
+      - if logged_in? && current_user == @article.user || current_user.admin?
+        = link_to 'Delete', articles_path, method: :delete,
+                    data: {confirm: 'Are you sure you want to delete the article?'},
+                    class: 'btn btn-sm btn-danger card-link'
+        = link_to 'Edit', edit_article_path, class: 'btn btn-sm btn-primary'
+      = link_to 'Back to list', articles_path, class: 'btn btn-sm btn-success'

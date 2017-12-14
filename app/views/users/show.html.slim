@@ -1,13 +1,15 @@
-<h1 align="center"> Welcome to <%= @user.username %>'s profile</h1>
-image placeholder
-<h1 align="center"> Articles</h1>
+h1 align="center"
+  ' Welcome to
+  = @user.username
+  |'s profile
 
-<div class="pagination justify-content-center pagination-bottom">
-  <%= will_paginate @user_articles %>
-</div>
+img.img-fluid.rounded.mx-auto.d-block src="http://www.pieglobal.com/wp-content/uploads/2015/10/placeholder-user.png" alt="Card image cap"
+h1 align="center" Articles
 
-<%= render 'articles/article', obj: @user_articles %>
+.pagination.justify-content-center
+  = will_paginate @user_articles
 
-<div class="pagination justify-content-center">
-  <%= will_paginate @user_articles %>
-</div>
+= render 'articles/article', obj: @user_articles
+
+.pagination.justify-content-center.pagination-bottom
+  = will_paginate @user_articles

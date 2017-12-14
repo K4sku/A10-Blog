@@ -1,10 +1,7 @@
-<div class="row">
-  <div class="col-sm">
-    <% flash.each do |name, msg| %>
-      <div class='alert alert-<%="#{name}" %>'>
-        <a href="#" class="close" data-dismiss="alert">&#215</a>
-        <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-      </div>
-    <% end %>
-  </div>
-</div>
+.row
+  .col-sm
+    - flash.each do |name, msg|
+      - alert_class = "alert-" + name
+      div class= "alert" class= alert_class
+        a href='#' class='close' data-dismiss='alert' &#215
+        = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)

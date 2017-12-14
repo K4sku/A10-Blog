@@ -1,0 +1,6 @@
+<% for i in 1..20 %>
+fix_<%= i %>:
+    title: <%= Faker::Lorem.sentence %>
+    description: <%= Faker::Lorem.characters(rand(200...300)) %>
+    user: <%= %w[tom jerry jake sonia].sample %>
+<% end %>

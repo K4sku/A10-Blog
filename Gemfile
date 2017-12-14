@@ -39,7 +39,7 @@ gem 'jquery-rails'
 gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap4'
-
+gem 'slim-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -48,17 +48,22 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
+  gem 'faker'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
+  gem 'awesome_print'
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'meta_request'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'web-console', '>= 3.3.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -1,12 +1,9 @@
-<% if obj.errors.any? %>
-    <div class="col-sm-8 offset-sm-2">
-      <div class="alert alert-warning" role="alert">
-        <h2 class="alert-heading"><%= pluralize(obj.errors.count, 'error') %> prevented from saving article</h2>
-        <ul>
-          <% obj.errors.full_messages.each do |msg| %>
-              <li> <%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-<% end %>
+- if obj.errors.any?
+  .col-sm-8.offset-sm-2
+    .alert.alert-warning role= alert
+      h2.alert-heading
+        = pluralize(obj.errors.count, 'error')
+          | prevented from saving article
+      ul
+        - obj.errors.full_messages.each do |msg|
+          li = msg
